@@ -1,15 +1,16 @@
 import AssignmentList from "./AssignmentList.js";
+import AddAssignmentForm from "./AddAssignmentForm.js";
 
 export default {
-  components: { AssignmentList },
+  components: { AssignmentList, AddAssignmentForm },
 
   template: `
     
 <assignment-list :assignments="inProgressAssignments" title="In Progress"></assignment-list>
 <assignment-list :assignments="CompletedAssignments" title="Completed"></assignment-list>
+<add-assignment-form @add="add" ></add-assignment-form>
 
-
-    `,
+    `, 
   data() {
     return {
       assignments: [
@@ -37,4 +38,15 @@ export default {
       };
     },
   },
+
+  methods : {
+
+    add(name){
+      this.assignments.push({
+        name: name,
+        complete: false,
+        id : this.assignments.length + 1
+      })
+    }
+  }
 };

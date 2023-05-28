@@ -20,11 +20,7 @@ export default {
 
   methods: {
     add() {
-      this.assignments.push({
-        id: this.assignments.length + 1,
-        name: this.newAssignment,
-        complete: false,
-      });
+      this.$emit('add', this.newAssignment);
 
       this.newAssignment = "";
     },
