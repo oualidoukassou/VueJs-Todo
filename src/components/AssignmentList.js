@@ -15,8 +15,11 @@ export default {
     {{ title }}
     <span>( {{assignments.length}} )</span>
     </h2>
-    
 
+    <div class="flex justify-around py-3">
+    <button class="outline rounded px-3 py-1" v-for="tag in tags">{{ tag }}</button>
+    </div>
+    
     <ul class="">
     <assignment v-for="assignment in assignments"
     :key="assignment.id" :assignment="assignment"></assignment>
@@ -25,11 +28,16 @@ export default {
 
     `,
 
-    props:{
+    props: {
 
         assignments: Array,
-        title : String,
+        title: String,
 
+    },
+    computed :{
+        tags() {
+            return ['science', 'math','reading'];
+        }
     }
 
 }
